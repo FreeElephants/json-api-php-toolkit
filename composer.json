@@ -1,0 +1,23 @@
+{
+    "name": "free-elephants/json-api-toolkit",
+    "description": "Tools for building specification first json:api / swagger integrated APIs",
+    "require": {
+        "free-elephants/di": "^2.0",
+        "neomerx/json-api": "^4.0",
+        "ext-json": "^7.4",
+        "psr/http-message": "^1.0",
+        "nikic/fast-route": "^1.3",
+        "nette/php-generator": "^3.3",
+        "zircote/swagger-php": "^3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0"
+    },
+    "license": "BSD-2",
+    "authors": [
+        {
+            "name": "samizdam,",
+            "email": "samizdam@inbox.ru"
+        }
+    ]
+}
