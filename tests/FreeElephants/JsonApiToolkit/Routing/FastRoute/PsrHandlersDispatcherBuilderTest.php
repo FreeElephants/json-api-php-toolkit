@@ -19,12 +19,14 @@ class PsrHandlersDispatcherBuilderTest extends AbstractTestCase
                 'GET'    => GetPetsHandler::class,
                 'POST'   => $postPetsHandler = new PostPetsHanlder(),
                 'DELETE' => 'TestHandlerStub\\DeletePetsHandler::handle',
+                'PATCH' => 'NotPSRHandler'
             ],
         ];
         $dispatcher = $builder->buildDispatcher($routesMap);
         $this->assertSame([Dispatcher::FOUND, GetPetsHandler::class, []], $dispatcher->dispatch('GET', '/pets'));
         $this->assertSame([Dispatcher::FOUND, $postPetsHandler, []], $dispatcher->dispatch('POST', '/pets'));
         $this->assertSame([Dispatcher::FOUND, DeletePetsHandler::class, []], $dispatcher->dispatch('DELETE', '/pets'));
+        $this->assertSame([Dispatcher::METHOD_NOT_ALLOWED, ['GET', 'POST', 'DELETE']], $dispatcher->dispatch('PATCH', '/pets'));
     }
 }
 

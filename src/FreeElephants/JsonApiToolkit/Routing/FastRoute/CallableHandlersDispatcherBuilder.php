@@ -9,14 +9,11 @@ use function FastRoute\simpleDispatcher;
 class CallableHandlersDispatcherBuilder implements DispatcherBuilderInterface
 {
 
-    public const DEFAULT_CALLBACK_CHECK_POLICY   = self::ADD_IF_CALLBACK;
-    public const ADD_IF_CALLBACK                 = 0;
-    public const ADD_ANYWAY                      = 1;
+    public const DEFAULT_CALLBACK_CHECK_POLICY = self::ADD_IF_CALLBACK;
+    public const ADD_IF_CALLBACK = 0;
+    public const ADD_ANYWAY = 1;
     public const THROW_EXCEPTION_IF_NOT_CALLBACK = 2;
-    /**
-     * @var string
-     */
-    private $callbackCheckPolicy;
+    private int $callbackCheckPolicy;
 
     public function __construct(int $callbackCheckPolicy = self::DEFAULT_CALLBACK_CHECK_POLICY)
     {
