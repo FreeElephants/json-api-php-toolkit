@@ -1,6 +1,6 @@
 <?php
 
-namespace FreeElephants\JsonApiToolkit\Routing;
+namespace FreeElephants\JsonApiToolkit\Routing\OpenApi;
 
 interface RoutesMapBuilderInterface
 {

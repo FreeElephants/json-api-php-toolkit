@@ -6,5 +6,4 @@ docker run --rm --interactive ${USE_TTY} \
     --init \
     --user `id -u`:`id -g` \
     --volume $PWD:/app \
-    --env-file .env \
     free-elephants/json-api-php-toolkit php "$@"

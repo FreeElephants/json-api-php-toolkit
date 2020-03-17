@@ -2,18 +2,24 @@
 
 namespace FreeElephants\JsonApiToolkit\Routing\OpenApi;
 
-use PHPUnit\Framework\TestCase;
+use FreeElephants\JsonApiToolkit\AbstractTestCase;
 
-class JsonRoutesMapCallableHandlerBuilderTest extends TestCase
+class JsonRoutesMapCallableHandlerBuilderTest extends AbstractTestCase
 {
 
     public function testBuildRoutesMap()
     {
         $builder = new JsonRoutesMapCallableHandlerBuilder();
-        $jsonSpec = <<<JSON
-
-JSON;
-        $expectedRouteMap = [];
+        $jsonSpec = file_get_contents(self::FIXTERE_PATH . '/examples/v2.0/json/petstore-with-callable-operationIds.json');
+        $expectedRouteMap = [
+            '/pets'         => [
+                'GET'  => 'listPets',
+                'POST' => 'createPets',
+            ],
+            '/pets/{petId}' => [
+                'GET' => 'showPetById',
+            ]
+        ];
         $this->assertEquals($expectedRouteMap, $builder->buildRoutesMap($jsonSpec));
     }
 }
