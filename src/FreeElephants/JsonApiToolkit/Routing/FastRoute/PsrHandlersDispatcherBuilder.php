@@ -15,8 +15,10 @@ class PsrHandlersDispatcherBuilder implements DispatcherBuilderInterface
         $dispatcher = simpleDispatcher(function (RouteCollector $routeCollector) use ($routesMap) {
             foreach ($routesMap as $path => $route) {
                 foreach ($route as $method => $handler) {
-                    if (is_callable($handler) && strpos('::', $handler) > 0) {
-                        $handler = array_pop(explode('::', $handler));
+                    if (is_callable($handler) && strpos($handler, '::handle') > 0) {
+                        $callbackParts = explode('::', $handler);
+                        $handlerClassName = array_shift($callbackParts);
+                        $handler = $handlerClassName;
                     }
                     if ($this->verifyHandler($handler)) {
                         $routeCollector->addRoute($method, $path, $handler);
