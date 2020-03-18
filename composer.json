@@ -13,7 +13,7 @@
     },
     "require": {
         "ext-json": "^7.4",
-        "danballance/oas-tools": "^0.2.0",
+        "cebe/php-openapi": "^1.4",
         "free-elephants/di": "^2.0",
         "neomerx/json-api": "^4.0",
         "nette/php-generator": "^3.3",
