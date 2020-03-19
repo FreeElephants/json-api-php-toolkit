@@ -3,10 +3,10 @@
 namespace FreeElephants\JsonApiToolkit\Routing\FastRoute;
 
 use cebe\openapi\Reader;
+use cebe\openapi\spec\Operation;
 use cebe\openapi\spec\PathItem;
 use FastRoute\Dispatcher;
 use FastRoute\RouteCollector;
-use Psr\Http\Server\RequestHandlerInterface;
 use function FastRoute\simpleDispatcher;
 
 class DispatcherFactory implements DispatcherFactoryInterface
@@ -17,9 +17,14 @@ class DispatcherFactory implements DispatcherFactoryInterface
         $openapi = Reader::readFromYaml($openApiDocumentSource);
         $paths = $openapi->paths->getIterator();
         $dispatcher = simpleDispatcher(function (RouteCollector $routeCollector) use ($paths) {
-            /**@var PathItem $pathItem*/
+            /**@var PathItem $pathItem */
             foreach ($paths as $path => $pathItem) {
-                var_dump($pathItem->getOperations());
+                /**@var Operation $operation */
+                foreach ($pathItem->getOperations() as $method => $operation) {
+                    $httpMethod = $this->normalizeHttpMethod($method);
+                    $handler = $this->normalizeOperationHandler($operation);
+                    $routeCollector->addRoute($httpMethod, $path, $handler);
+                }
 //                foreach ($route as $method => $handler) {
 //                    if (is_callable($handler) && strpos($handler, '::handle') > 0) {
 //                        $callbackParts = explode('::', $handler);
@@ -27,13 +32,23 @@ class DispatcherFactory implements DispatcherFactoryInterface
 //                        $handler = $handlerClassName;
 //                    }
 //                    if ($this->verifyHandler($handler)) {
-                        $routeCollector->addRoute($method, $path, $handler);
+
 //                    }
 //                }
             }
         });
 
         return $dispatcher;
+    }
+
+    private function normalizeHttpMethod(string $method): string
+    {
+        return strtoupper($method);
+    }
+
+    private function normalizeOperationHandler(Operation $operation): string
+    {
+        return $operation->operationId;
     }
 
 //    private function verifyHandler($handler): bool
