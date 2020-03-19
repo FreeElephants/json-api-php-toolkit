@@ -2,19 +2,31 @@
 
 namespace FreeElephants\JsonApiToolkit\Routing\FastRoute;
 
-use cebe\openapi\Reader;
 use cebe\openapi\spec\Operation;
 use cebe\openapi\spec\PathItem;
 use FastRoute\Dispatcher;
 use FastRoute\RouteCollector;
+use FreeElephants\JsonApiToolkit\OasToolsAdapter\OpenApiDocumentParserInterface;
+use FreeElephants\JsonApiToolkit\OasToolsAdapter\YamlStringParser;
 use function FastRoute\simpleDispatcher;
 
 class DispatcherFactory implements DispatcherFactoryInterface
 {
+    private OpenApiDocumentParserInterface $apiDocumentParser;
+    /**
+     * @var OperationHandlerNormalizerInterface
+     */
+    private OperationHandlerNormalizerInterface $operationHandlerNormalizer;
+
+    public function __construct(OperationHandlerNormalizerInterface $operationHandlerNormalizer = null, OpenApiDocumentParserInterface $apiDocumentParser = null)
+    {
+        $this->operationHandlerNormalizer = $operationHandlerNormalizer ?: new DefaultOperationHandlerNormalizer();
+        $this->apiDocumentParser = $apiDocumentParser ?: new YamlStringParser();
+    }
 
     public function buildDispatcher(string $openApiDocumentSource): Dispatcher
     {
-        $openapi = Reader::readFromYaml($openApiDocumentSource);
+        $openapi = $this->apiDocumentParser->parse($openApiDocumentSource);
         $paths = $openapi->paths->getIterator();
         $dispatcher = simpleDispatcher(function (RouteCollector $routeCollector) use ($paths) {
             /**@var PathItem $pathItem */
@@ -25,16 +37,6 @@ class DispatcherFactory implements DispatcherFactoryInterface
                     $handler = $this->normalizeOperationHandler($operation);
                     $routeCollector->addRoute($httpMethod, $path, $handler);
                 }
-//                foreach ($route as $method => $handler) {
-//                    if (is_callable($handler) && strpos($handler, '::handle') > 0) {
-//                        $callbackParts = explode('::', $handler);
-//                        $handlerClassName = array_shift($callbackParts);
-//                        $handler = $handlerClassName;
-//                    }
-//                    if ($this->verifyHandler($handler)) {
-
-//                    }
-//                }
             }
         });
 
@@ -51,11 +53,4 @@ class DispatcherFactory implements DispatcherFactoryInterface
         return $operation->operationId;
     }
 
-//    private function verifyHandler($handler): bool
-//    {
-//        if (is_subclass_of($handler, RequestHandlerInterface::class)) {
-//            return true;
-//        }
-//        return false;
-//    }
 }
