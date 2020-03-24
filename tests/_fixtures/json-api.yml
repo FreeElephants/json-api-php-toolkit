@@ -22,251 +22,87 @@ paths:
             application/vnd.api+json:
               schema:
                 $ref: '#/components/schemas/ArticlesCollection'
+    post:
+      operationId: ArticlesCreateHandler::handle
+      responses:
+        201:
+          description: Create new Article
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/ArticlesDocument'
+      requestBody:
+        content:
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/ArticlesDocument'
 
 
 components:
   schemas:
     ArticlesCollection:
       allOf:
-        - $ref: '#/components/schemas/success'
+        - $ref: 'json-api-common.yml#/success'
         - type: object
+          properties:
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/ArticlesResource'
 
-    success:
-      type: object
-      required:
-        - data
-      properties:
-        data:
-          "$ref": "#/components/schemas/data"
-        included:
-          description: To reduce the number of HTTP requests, servers **MAY** allow
-            responses that include related resources along with the requested primary
-            resources. Such responses are called "compound documents".
-          type: array
-          items:
-            "$ref": "#/components/schemas/resource"
-          uniqueItems: true
-        meta:
-          "$ref": "#/components/schemas/meta"
-        links:
-          description: Link members related to the primary data.
-          allOf:
-            - "$ref": "#/components/schemas/links"
-            - "$ref": "#/components/schemas/pagination"
-        jsonapi:
-          "$ref": "#/components/schemas/jsonapi"
-      additionalProperties: false
-    failure:
-      type: object
-      required:
-        - errors
-      properties:
-        errors:
-          type: array
-          items:
-            "$ref": "#/components/schemas/error"
-          uniqueItems: true
-        meta:
-          "$ref": "#/components/schemas/meta"
-        jsonapi:
-          "$ref": "#/components/schemas/jsonapi"
-        links:
-          "$ref": "#/components/schemas/links"
-      additionalProperties: false
-    info:
-      type: object
-      required:
-        - meta
-      properties:
-        meta:
-          "$ref": "#/components/schemas/meta"
-        links:
-          "$ref": "#/components/schemas/links"
-        jsonapi:
-          "$ref": "#/components/schemas/jsonapi"
-      additionalProperties: false
-    meta:
-      description: Non-standard meta-information that can not be represented as an attribute
-        or relationship.
-      type: object
-      additionalProperties: true
-    data:
-      description: The document's "primary data" is a representation of the resource
-        or collection of resources targeted by a request.
-      oneOf:
-        - "$ref": "#/components/schemas/resource"
-        - description: An array of resource objects, an array of resource identifier objects,
-            or an empty array ([]), for requests that target resource collections.
-          type: array
-          items:
-            "$ref": "#/components/schemas/resource"
-          uniqueItems: true
-        - description: null if the request is one that might correspond to a single resource,
-            but doesn't currently.
-          type: 'null'
-    resource:
-      description: '"Resource objects" appear in a JSON:API document to represent resources.'
-      type: object
-      required:
-        - type
-        - id
-      properties:
-        type:
-          type: string
-        id:
-          type: string
-        attributes:
-          "$ref": "#/components/schemas/attributes"
-        relationships:
-          "$ref": "#/components/schemas/relationships"
-        links:
-          "$ref": "#/components/schemas/links"
-        meta:
-          "$ref": "#/components/schemas/meta"
-      additionalProperties: false
-    relationshipLinks:
-      description: A resource object **MAY** contain references to other resource objects
-        ("relationships"). Relationships may be to-one or to-many. Relationships can
-        be specified by including a member in a resource's links object.
-      type: object
-      properties:
-        self:
-          "$ref": "#/components/schemas/link"
-        related:
-          "$ref": "#/components/schemas/link"
-      additionalProperties: true
-    links:
-      type: object
-      additionalProperties:
-        "$ref": "#/components/schemas/link"
-    link:
-      description: 'A link **MUST** be represented as either: a string containing the
-        link''s URL or a link object.'
-      oneOf:
-        - description: A string containing the link's URL.
-          type: string
-          format: uri-reference
+    ArticlesDocument:
+      allOf:
+        - $ref: 'json-api-common.yml#/success'
         - type: object
-          required:
-            - href
+          x-json-api:
+            type: articles
+            value: top-level-document
           properties:
-            href:
-              description: A string containing the link's URL.
-              type: string
-              format: uri-reference
-            meta:
-              "$ref": "#/components/schemas/meta"
-    attributes:
-      description: Members of the attributes object ("attributes") represent information
-        about the resource object in which it's defined.
-      type: object
-      additionalProperties: false
-    relationships:
-      description: Members of the relationships object ("relationships") represent references
-        from the resource object in which it's defined to other resource objects.
-      type: object
-      additionalProperties: false
-    relationshipToOne:
-      description: References to other resource objects in a to-one ("relationship").
-        Relationships can be specified by including a member in a resource's links object.
-      anyOf:
-        - "$ref": "#/components/schemas/empty"
-        - "$ref": "#/components/schemas/linkage"
-    relationshipToMany:
-      description: An array of objects each containing "type" and "id" members for to-many
-        relationships.
-      type: array
-      items:
-        "$ref": "#/components/schemas/linkage"
-      uniqueItems: true
-    empty:
-      description: Describes an empty to-one relationship.
-      type: 'null'
-    linkage:
-      description: The "type" and "id" to non-empty members.
-      type: object
-      required:
-        - type
-        - id
-      properties:
-        type:
-          type: string
-        id:
-          type: string
-        meta:
-          "$ref": "#/components/schemas/meta"
-      additionalProperties: false
-    pagination:
-      type: object
-      properties:
-        first:
-          description: The first page of data
-          oneOf:
-            - type: string
-              format: uri-reference
-            - type: 'null'
-        last:
-          description: The last page of data
-          oneOf:
-            - type: string
-              format: uri-reference
-            - type: 'null'
-        prev:
-          description: The previous page of data
-          oneOf:
-            - type: string
-              format: uri-reference
-            - type: 'null'
-        next:
-          description: The next page of data
-          oneOf:
-            - type: string
-              format: uri-reference
-            - type: 'null'
-    jsonapi:
-      description: An object describing the server's implementation
-      type: object
-      properties:
-        version:
-          type: string
-        meta:
-          "$ref": "#/components/schemas/meta"
-      additionalProperties: false
-    error:
-      type: object
-      properties:
-        id:
-          description: A unique identifier for this particular occurrence of the problem.
-          type: string
-        links:
-          "$ref": "#/components/schemas/links"
-        status:
-          description: The HTTP status code applicable to this problem, expressed as
-            a string value.
-          type: string
-        code:
-          description: An application-specific error code, expressed as a string value.
-          type: string
-        title:
-          description: A short, human-readable summary of the problem. It **SHOULD NOT**
-            change from occurrence to occurrence of the problem, except for purposes
-            of localization.
-          type: string
-        detail:
-          description: A human-readable explanation specific to this occurrence of the
-            problem.
-          type: string
-        source:
-          type: object
+            data:
+              $ref: '#/components/schemas/ArticlesResource'
+
+    ArticlesResource:
+      allOf:
+        - $ref: 'json-api-common.yml#/data'
+        - type: object
+          x-json-api:
+            type: articles
+            value: resource-object
           properties:
-            pointer:
-              description: A JSON Pointer [RFC6901] to the associated entity in the
-                request document [e.g. "/data" for a primary data object, or "/data/attributes/title"
-                for a specific attribute].
-              type: string
-            parameter:
-              description: A string indicating which query parameter caused the error.
-              type: string
-        meta:
-          "$ref": "#/components/schemas/meta"
-      additionalProperties: false
+            attributes:
+              allOf:
+                - $ref: 'json-api-common.yml#/attributes'
+                - type: object
+                  x-json-api:
+                    type: articles
+                    value: attributes
+                  properties:
+                    title:
+                      type: string
+                      example: "Rails is Omakase"
+                      required: true
+            relationships:
+              $ref: 'json-api-common.yml#/relationships'
+
+    PeopleResource:
+      allOf:
+        - $ref: 'json-api-common.yml#/data'
+        - type: object
+          x-json-api:
+            type: people
+            value: resource-object
+          properties:
+            attributes:
+              allOf:
+                - $ref: 'json-api-common.yml#/attributes'
+                - type: object
+                  x-json-api:
+                    type: people
+                    value: attributes
+                  properties:
+                    first-name:
+                      type: string
+                    last-name:
+                      type: string
+                    twitter:
+                      type: string

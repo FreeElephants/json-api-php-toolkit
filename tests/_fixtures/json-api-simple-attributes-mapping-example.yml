@@ -1,0 +1,20 @@
+openapi: "3.0.0"
+info:
+  title: "Simple json:api Attributes mapping example"
+  version: "1.0.0"
+paths: {}
+
+components:
+  schemas:
+    articlesAttributues:
+      type: object
+      required:
+        - title
+      x-json-api:
+        type: articles
+        value: attributes
+      properties:
+        title:
+          type: string
+
+
