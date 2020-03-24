@@ -50,7 +50,7 @@ class DispatcherFactory implements DispatcherFactoryInterface
 
     private function normalizeOperationHandler(Operation $operation): string
     {
-        return $operation->operationId;
+        return $this->operationHandlerNormalizer->normalize($operation->operationId);
     }
 
 }
