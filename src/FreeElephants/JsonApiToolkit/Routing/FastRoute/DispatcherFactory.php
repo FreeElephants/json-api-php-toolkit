@@ -17,11 +17,17 @@ class DispatcherFactory implements DispatcherFactoryInterface
      * @var OperationHandlerNormalizerInterface
      */
     private OperationHandlerNormalizerInterface $operationHandlerNormalizer;
+    private ?string $optionsHandler;
 
-    public function __construct(OperationHandlerNormalizerInterface $operationHandlerNormalizer = null, OpenApiDocumentParserInterface $apiDocumentParser = null)
+    public function __construct(
+        OperationHandlerNormalizerInterface $operationHandlerNormalizer = null,
+        OpenApiDocumentParserInterface $apiDocumentParser = null,
+        string $optionsHandler = null
+    )
     {
         $this->operationHandlerNormalizer = $operationHandlerNormalizer ?: new DefaultOperationHandlerNormalizer();
         $this->apiDocumentParser = $apiDocumentParser ?: new YamlStringParser();
+        $this->optionsHandler = $optionsHandler;
     }
 
     public function buildDispatcher(string $openApiDocumentSource): Dispatcher
@@ -36,6 +42,9 @@ class DispatcherFactory implements DispatcherFactoryInterface
                     $httpMethod = $this->normalizeHttpMethod($method);
                     $handler = $this->normalizeOperationHandler($operation);
                     $routeCollector->addRoute($httpMethod, $path, $handler);
+                }
+                if (null !== $this->optionsHandler) {
+                    $routeCollector->addRoute('OPTIONS', $path, $this->optionsHandler);
                 }
             }
         });
