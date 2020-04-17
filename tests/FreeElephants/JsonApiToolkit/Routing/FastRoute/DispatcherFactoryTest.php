@@ -7,37 +7,64 @@ use FreeElephants\JsonApiToolkit\AbstractTestCase;
 
 class DispatcherFactoryTest extends AbstractTestCase
 {
-    public function testBuildDispatcher()
+    private string $yaml;
+
+    public function setUp(): void
     {
-        $factory = new DispatcherFactory();
-        $dispatcher = $factory->buildDispatcher(<<<YAML
+        parent::setUp();
+
+        $this->yaml = <<<YAML
 paths: 
   /articles:
     get:
-      operationId: ArticlesCollectionHandler::handle
-YAML
-);
-        $this->assertSame([Dispatcher::FOUND, 'ArticlesCollectionHandler::handle', []], $dispatcher->dispatch('GET', '/articles'));
+      operationId: ArticlesCollectionGetHandler::handle
+  /posts:
+    get:
+      operationId: PostsCollectionGetHandler::handle
+    post:
+      operationId: PostsCollectionPostHandler::handle
+YAML;
+    }
+
+    public function testBuildDispatcher()
+    {
+        $factory = new DispatcherFactory();
+        $dispatcher = $factory->buildDispatcher($this->yaml);
+
+        $expected = [Dispatcher::FOUND, 'ArticlesCollectionGetHandler::handle', []];
+
+        $actual = $dispatcher->dispatch('GET', '/articles');
+
+        $this->assertSame($expected, $actual);
     }
 
     public function testOptions()
     {
-        $factory = new DispatcherFactory(
+        $dispatcherFactory = new DispatcherFactory(
             null,
-            null,
-            '\Path\To\OptionsHandler::handle'
+            null
         );
-        $dispatcher = $factory->buildDispatcher(<<<YAML
-paths: 
-  /articles:
-    get:
-      operationId: ArticlesCollectionHandler::handle
-YAML
-        );
+        $optionsRequestHandlerFactory = new OptionsRequestHandlerFactory(OptionsRequestHandlerMock::class);
+        $dispatcherFactory->setOptionsHandlerFactory($optionsRequestHandlerFactory);
+        $dispatcher = $dispatcherFactory->buildDispatcher($this->yaml);
 
-        $expect = [Dispatcher::FOUND, '\Path\To\OptionsHandler::handle', []];
+        $expect = [
+            Dispatcher::FOUND,
+            sprintf('%s::handle', OptionsRequestHandlerMock::class),
+            ['GET', 'OPTIONS']
+        ];
 
         $actual = $dispatcher->dispatch('OPTIONS', '/articles');
+
+        $this->assertSame($expect, $actual);
+
+        $expect = [
+            Dispatcher::FOUND,
+            sprintf('%s::handle', OptionsRequestHandlerMock::class),
+            ['GET', 'OPTIONS', 'POST']
+        ];
+
+        $actual = $dispatcher->dispatch('OPTIONS', '/posts');
 
         $this->assertSame($expect, $actual);
     }
