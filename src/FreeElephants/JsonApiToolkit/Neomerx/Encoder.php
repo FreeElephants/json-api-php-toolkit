@@ -8,10 +8,7 @@ use Neomerx\JsonApi\Encoder\Encoder as NeomerxEncoder;
 
 class Encoder extends NeomerxEncoder
 {
-    /**
-     * @var EntityManagerInterface
-     */
-    private static $entityManager;
+    private static EntityManagerInterface $entityManager;
 
     public static function setEntityManager(EntityManagerInterface $entityManager)
     {
