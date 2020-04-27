@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Data Transfer Object classes generation from swagger spec
 - Neomerx Encoder implementation aware about Doctrine Proxies
+- DTO super classes
 
 ## [0.0.2] - 2020-03-24
 ### Fixed
