@@ -23,7 +23,11 @@
         "zircote/swagger-php": "^3.0"
     },
     "require-dev": {
+        "doctrine/orm": "^2.7",
         "phpunit/phpunit": "^9.0"
+    },
+    "suggest": {
+        "doctrine/orm": "^2.7"
     },
     "autoload": {
         "psr-4": {
