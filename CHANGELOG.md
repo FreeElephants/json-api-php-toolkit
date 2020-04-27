@@ -13,6 +13,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Bump version with merged 0.0.2 changes
 - Correct license value
 
+### Changed
+- Remove unused zircote/swagger-php package
+
 ## [0.0.3] - 2020-04-27 [YANKED]
 ### Added
 - Neomerx Encoder implementation aware about Doctrine Proxies
