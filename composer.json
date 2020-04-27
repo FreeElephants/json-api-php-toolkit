@@ -1,7 +1,7 @@
 {
     "name": "free-elephants/json-api-toolkit",
     "description": "Tools for building specification first json:api / swagger integrated APIs",
-    "license": "BSD-2",
+    "license": "BSD-2.0",
     "authors": [
         {
             "name": "samizdam",
