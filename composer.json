@@ -24,6 +24,7 @@
     },
     "require-dev": {
         "doctrine/orm": "^2.7",
+        "nyholm/psr7": "^1.2",
         "phpunit/phpunit": "^9.0"
     },
     "suggest": {
