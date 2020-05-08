@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Data Transfer Object classes generation from swagger spec
 - Validation subpackage based on rakit/validation
+- Request Validation Middleware
+- JsonApiResponseFactory
 
 ## [0.0.4] - 2020-04-27
 ### Fixed 

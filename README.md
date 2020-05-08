@@ -5,8 +5,8 @@
 * [x] Serialize Doctrine entities with Neomerx schemas (resolve issue https://github.com/neomerx/json-api/issues/40)  
 * [ ] Generate PHP Data Transfer Objects by OAS3 `reponseBody` and `requestBody` schema reference compliance with json:api
 * [x] Map Psr Requests to Data Transfer Objects
-* [ ] Validate Psr Request with application business logic, and build Psr Response with json:api errors
-* [ ] Map application models to Psr Response compliance with json:api structure
+* [x] Validate income Psr Request, and build Psr Response with json:api errors
+* [x] Map application models to Psr Response compliance with json:api structure
 
 ## Usage
 
