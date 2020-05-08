@@ -12,7 +12,7 @@ use Neomerx\JsonApi\Encoder\Encoder;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Psr\Http\Server\RequestHandlerInterface;
 
-class ValidationMiddlewareTest extends AbstractHttpTestCase
+class ValidationTest extends AbstractHttpTestCase
 {
     public function testProcessBadRequestResponse()
     {
@@ -21,7 +21,7 @@ class ValidationMiddlewareTest extends AbstractHttpTestCase
         $validationResult->addError('data.attributes.bar', 'required', 'Bar need baz');
         $validator->method('validate')->willReturn($validationResult);
         $jsonApiResponseFactory = new JsonApiResponseFactory(Encoder::instance(), new Psr17Factory(), new ErrorFactory());
-        $middleware = new ValidationMiddleware($jsonApiResponseFactory, $validator, $this->createMock(Rules::class));
+        $middleware = new Validation($jsonApiResponseFactory, $validator, $this->createMock(Rules::class));
         $handlerMock = $this->createMock(RequestHandlerInterface::class);
         $request = $this->createServerRequest('POST', '/foo');
         $request = $request->withParsedBody([]);

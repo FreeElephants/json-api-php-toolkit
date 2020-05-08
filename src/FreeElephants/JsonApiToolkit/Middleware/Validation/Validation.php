@@ -10,7 +10,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-class ValidationMiddleware implements MiddlewareInterface
+class Validation implements MiddlewareInterface
 {
     private ValidatorInterface $validator;
     private JsonApiResponseFactory $jsonApiResponseFactory;
