@@ -5,7 +5,7 @@ namespace FreeElephants\JsonApiToolkit\Middleware;
 use FreeElephants\JsonApiToolkit\AbstractHttpTestCase;
 use Psr\Http\Message\ServerRequestInterface;
 
-class BodyParserMiddlewareTest extends AbstractHttpTestCase
+class BodyParserTest extends AbstractHttpTestCase
 {
     public function testProcess()
     {
@@ -30,7 +30,7 @@ JSON
             return $this->createResponse();
         });
 
-        $bodyParser = new BodyParserMiddleware();
+        $bodyParser = new BodyParser();
         $bodyParser->process($request, $handler);
     }
 }

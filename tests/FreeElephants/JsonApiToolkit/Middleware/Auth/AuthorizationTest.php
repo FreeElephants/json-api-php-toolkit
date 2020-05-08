@@ -8,12 +8,12 @@ use FreeElephants\JsonApiToolkit\Psr\JsonApiResponseFactory;
 use Neomerx\JsonApi\Contracts\Encoder\EncoderInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-class AuthorizationMiddlewareTest extends AbstractHttpTestCase
+class AuthorizationTest extends AbstractHttpTestCase
 {
     public function testProcessPositive()
     {
         $policy = $this->createPolicyMock();
-        $middleware = new AuthorizationMiddleware($policy, $this->createJsonApiResponseFactory());
+        $middleware = new Authorization($policy, $this->createJsonApiResponseFactory());
         $request = $this->createServerRequest('GET', '/v1/users/42');
         $handlerSpy = $this->createRequestHandlerWithAssertions(function (ServerRequestInterface $passedRequest) use ($request) {
             $this->assertSame($request, $passedRequest);
@@ -28,7 +28,7 @@ class AuthorizationMiddlewareTest extends AbstractHttpTestCase
     public function testUnauthorized()
     {
         $policy = $this->createPolicyMock(PolicyInterface::RESULT_UNAUTHORIZED);
-        $middleware = new AuthorizationMiddleware($policy, $this->createJsonApiResponseFactory());
+        $middleware = new Authorization($policy, $this->createJsonApiResponseFactory());
         $request = $this->createServerRequest('GET', '/v1/users/42');
         $handlerSpy = $this->createRequestHandlerWithAssertions(function (ServerRequestInterface $passedRequest) use ($request) {
             $this->assertSame($request, $passedRequest);
@@ -43,7 +43,7 @@ class AuthorizationMiddlewareTest extends AbstractHttpTestCase
     public function testForbidden()
     {
         $policy = $this->createPolicyMock(PolicyInterface::RESULT_FORBIDDEN);
-        $middleware = new AuthorizationMiddleware($policy, $this->createJsonApiResponseFactory());
+        $middleware = new Authorization($policy, $this->createJsonApiResponseFactory());
         $request = $this->createServerRequest('GET', '/v1/users/42');
         $handlerSpy = $this->createRequestHandlerWithAssertions(function (ServerRequestInterface $passedRequest) use ($request) {
             $this->assertSame($request, $passedRequest);
