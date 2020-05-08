@@ -7,7 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - Data Transfer Object classes generation from swagger spec
-- Middleware: Authorization based on Policies, ErrorHandler, Body
+
+## [0.0.6] - 2020-05-08
+### Added
+- Middleware: Authorization based on Policies, ErrorHandler, BodyParser
+- Psr Application
 
 ## [0.0.5] - 2020-05-08
 ### Added
