@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - Data Transfer Object classes generation from swagger spec
+- Validation subpackage based on rakit/validation
 
 ## [0.0.4] - 2020-04-27
 ### Fixed 
