@@ -3,6 +3,7 @@
 namespace FreeElephants\JsonApiToolkit\Neomerx\Doctrine;
 
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\Proxy;
 use Neomerx\JsonApi\Contracts\Factories\FactoryInterface;
 use Neomerx\JsonApi\Schema\SchemaContainer;
 
@@ -18,11 +19,13 @@ class DoctrineProxyAwareSchemaContainer extends SchemaContainer
 
     protected function getResourceType($resource): string
     {
-        $className = get_class($resource);
-        if ($this->entityManager->getMetadataFactory()->hasMetadataFor($className)) {
-            $className = $this->entityManager->getClassMetadata($className)->getName();
+        $class = get_class($resource);
+        $pos = strrpos($class, '\\' . Proxy::MARKER . '\\');
+
+        if (false === $pos) {
+            return $class;
         }
 
-        return $className;
+        return substr($class, $pos + Proxy::MARKER_LENGTH + 2);
     }
 }

@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Relationships support in DTO classes
 - Factory and Middleware Decorator for assign middleware to methods
 
+### Fixed
+- DoctrineProxyAwareSchemaContainer handle not entity classes correct 
+
 ## [0.0.6] - 2020-05-08
 ### Added
 - Middleware: Authorization based on Policies, ErrorHandler, BodyParser
