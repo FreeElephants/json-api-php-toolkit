@@ -11,7 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Factory and Middleware Decorator for assign middleware to methods
 
 ### Fixed
-- DoctrineProxyAwareSchemaContainer handle not entity classes correct 
+- DoctrineProxyAwareSchemaContainer handle not entity classes correct
+- Allow all headers (CORS) 
+- Handle empty operationId with "not implemented" response
 
 ## [0.0.6] - 2020-05-08
 ### Added

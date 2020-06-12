@@ -7,7 +7,7 @@ use Laminas\Stratigility\MiddlewarePipe;
 use Laminas\Stratigility\MiddlewarePipeInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-class MethodAwareMiddlewarePipeFactory
+class MethodAwareMiddlewarePipeFactory implements MiddlewarePipeFactoryInterface
 {
     private MiddlewareFactoryInterface $middlewareFactory;
     private array $middlewareMap;

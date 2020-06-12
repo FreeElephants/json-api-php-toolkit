@@ -3,7 +3,7 @@
 namespace FreeElephants\JsonApiToolkit\Psr;
 
 use FastRoute\Dispatcher;
-use FreeElephants\JsonApiToolkit\Middleware\MiddlewarePipeFactory;
+use FreeElephants\JsonApiToolkit\Middleware\MiddlewarePipeFactoryInterface;
 use InvalidArgumentException;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -14,9 +14,9 @@ class Application
     private Dispatcher $dispatcher;
     private ResponseFactoryInterface $responseFactory;
     private RequestHandlerFactory $requestHandlerFactory;
-    private MiddlewarePipeFactory $middlewarePipeFactory;
+    private MiddlewarePipeFactoryInterface $middlewarePipeFactory;
 
-    public function __construct(Dispatcher $dispatcher, ResponseFactoryInterface $responseFactory, RequestHandlerFactory $requestHandlerFactory, MiddlewarePipeFactory $middlewarePipeFactory)
+    public function __construct(Dispatcher $dispatcher, ResponseFactoryInterface $responseFactory, RequestHandlerFactory $requestHandlerFactory, MiddlewarePipeFactoryInterface $middlewarePipeFactory)
     {
         $this->dispatcher = $dispatcher;
         $this->responseFactory = $responseFactory;
@@ -69,7 +69,7 @@ class Application
         $allowedMethods[] = 'OPTIONS';
 
         return $this->responseFactory->createResponse()
-            ->withHeader('Access-Control-Allow-Headers', 'Content-Type')
+            ->withHeader('Access-Control-Allow-Headers', '*')
             ->withHeader('Access-Control-Allow-Origin', '*')
             ->withHeader('Access-Control-Allow-Methods', join(', ', $allowedMethods));
     }
