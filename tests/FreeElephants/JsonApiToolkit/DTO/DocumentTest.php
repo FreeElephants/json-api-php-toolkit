@@ -28,6 +28,7 @@ JSON
 
         $this->assertInstanceOf(FooResource::class, $fooDTO->data);
         $this->assertInstanceOf(FooAttributes::class, $fooDTO->data->attributes);
+        $this->assertSame('foo', $fooDTO->data->type);
         $this->assertSame('bar', $fooDTO->data->attributes->foo);
     }
 }
