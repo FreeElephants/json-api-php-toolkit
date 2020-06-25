@@ -3,9 +3,6 @@
 namespace FreeElephants\JsonApiToolkit\Middleware\Auth;
 
 use FreeElephants\JsonApiToolkit\AbstractHttpTestCase;
-use FreeElephants\JsonApiToolkit\Psr\ErrorFactory;
-use FreeElephants\JsonApiToolkit\Psr\JsonApiResponseFactory;
-use Neomerx\JsonApi\Contracts\Encoder\EncoderInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 class AuthorizationTest extends AbstractHttpTestCase
@@ -61,10 +58,5 @@ class AuthorizationTest extends AbstractHttpTestCase
         $policy->method('check')->willReturn($result);
 
         return $policy;
-    }
-
-    private function createJsonApiResponseFactory(): JsonApiResponseFactory
-    {
-        return new JsonApiResponseFactory($this->createMock(EncoderInterface::class), $this, $this->createMock(ErrorFactory::class));
     }
 }
