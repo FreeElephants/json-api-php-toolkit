@@ -50,6 +50,5 @@ class AbstractHttpTestCase extends AbstractTestCase implements ResponseFactoryIn
     protected function createJsonApiResponseFactory(): JsonApiResponseFactory
     {
         return new JsonApiResponseFactory($this->createMock(EncoderInterface::class), $this, $this->createMock(ErrorFactory::class));
-//        return new JsonApiResponseFactory(Encoder::instance([]), $this, new ErrorFactory());
     }
 }
