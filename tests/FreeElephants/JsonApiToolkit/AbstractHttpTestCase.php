@@ -2,7 +2,10 @@
 
 namespace FreeElephants\JsonApiToolkit;
 
+use FreeElephants\JsonApiToolkit\Psr\ErrorFactory;
+use FreeElephants\JsonApiToolkit\Psr\JsonApiResponseFactory;
 use Helmich\Psr7Assert\Psr7Assertions;
+use Neomerx\JsonApi\Contracts\Encoder\EncoderInterface;
 use Nyholm\Psr7\Response;
 use Nyholm\Psr7\ServerRequest;
 use Psr\Http\Message\ResponseFactoryInterface;
@@ -41,5 +44,11 @@ class AbstractHttpTestCase extends AbstractTestCase implements ResponseFactoryIn
                 return call_user_func($this->callable, $request);
             }
         };
+    }
+
+
+    protected function createJsonApiResponseFactory(): JsonApiResponseFactory
+    {
+        return new JsonApiResponseFactory($this->createMock(EncoderInterface::class), $this, $this->createMock(ErrorFactory::class));
     }
 }

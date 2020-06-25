@@ -8,6 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Data Transfer Object classes generation from swagger spec
 
+## [0.0.8] - 2020-06-25
+### Added
+- fig/http-message-util package dependency (StatusCodeInterface is using)
+
+### Fixed
+- Respond with 400 instead 500 on invalid json, handle it with BodyParser middleware
+- Set type in DTO\AbstractResourceObject
+
 ## [0.0.7] - 2020-06-12
 ### Added
 - Relationships support in DTO classes
@@ -54,7 +62,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - FastRoute Dispatcher generation from swagger operationIds
 
-[Unreleased]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.7...HEAD
+[Unreleased]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.8...HEAD
+[0.0.8]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.7...0.0.8
 [0.0.7]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.6...0.0.7
 [0.0.6]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.5...0.0.6
 [0.0.5]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.4...0.0.5
