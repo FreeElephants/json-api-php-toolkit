@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - Data Transfer Object classes generation from swagger spec
+- Typed attributes fields support and nested key-value structures in DTO
 
 ## [0.0.8] - 2020-06-25
 ### Added
