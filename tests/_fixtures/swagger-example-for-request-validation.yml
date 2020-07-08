@@ -1,0 +1,54 @@
+openapi: "3.0.0"
+info:
+  title: Swagger example
+  version: 0.0.1
+
+paths:
+  /v1/articles:
+    post:
+      summary: Create new Post
+      security:
+        - jwtAuth: []
+      responses:
+        201:
+          description: Created
+      requestBody:
+        content:
+          "application/vnd.api+json":
+            schema:
+              $ref: '#/components/requestBodies/createArticle'
+
+components:
+  securitySchemes:
+    jwtAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  requestBodies:
+    createArticle:
+      $ref: '#/components/schemas/createArticleDocument'
+
+  schemas:
+    createArticleDocument:
+      properties:
+        data:
+          required:
+            - id
+            - type
+          properties:
+            id:
+              format: uuid
+              type: string
+            type:
+              example: articles
+              type: string
+            attributes:
+              required:
+                - title
+                - text
+              properties:
+                title:
+                  type: string
+                text:
+                  type: string
