@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - Data Transfer Object classes generation from swagger spec
+
+## [0.0.9] - 2020-07-08
+### Added
 - Typed attributes fields support and nested key-value structures in DTO
 - SwaggerSpecificationRequestValidator middleware
 
@@ -64,7 +67,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - FastRoute Dispatcher generation from swagger operationIds
 
-[Unreleased]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.8...HEAD
+[Unreleased]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.9...HEAD
+[0.0.8]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.8...0.0.9
 [0.0.8]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.7...0.0.8
 [0.0.7]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.6...0.0.7
 [0.0.6]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.5...0.0.6
