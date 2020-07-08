@@ -17,7 +17,13 @@ class DocumentTest extends AbstractTestCase
         "id": "123",
         "type": "foo",
         "attributes": {
-            "foo": "bar"
+            "foo": "bar",
+            "date": "2012-04-23T18:25:43.511Z",
+            "nested": {
+                "someNestedStructure": {
+                    "someKey": "someValue"
+                }
+            }
         }
     }
 }
@@ -30,6 +36,8 @@ JSON
         $this->assertInstanceOf(FooAttributes::class, $fooDTO->data->attributes);
         $this->assertSame('foo', $fooDTO->data->type);
         $this->assertSame('bar', $fooDTO->data->attributes->foo);
+        $this->assertEquals(new \DateTime('2012-04-23T18:25:43.511Z'), $fooDTO->data->attributes->date);
+        $this->assertEquals('someValue', $fooDTO->data->attributes->nested->someNestedStructure->someKey);
     }
 }
 
@@ -46,4 +54,16 @@ class FooResource extends AbstractResourceObject
 class FooAttributes extends AbstractAttributes
 {
     public string $foo;
+    public \DateTime $date;
+    public Nested $nested;
+}
+
+class Nested extends BaseKeyValueStructure
+{
+    public SomeNestedStructure $someNestedStructure;
+}
+
+class SomeNestedStructure extends BaseKeyValueStructure
+{
+    public string $someKey;
 }

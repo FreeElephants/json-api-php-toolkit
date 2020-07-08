@@ -2,12 +2,6 @@
 
 namespace FreeElephants\JsonApiToolkit\DTO;
 
-abstract class AbstractAttributes
+abstract class AbstractAttributes extends BaseKeyValueStructure
 {
-    public function __construct(array $attributes)
-    {
-        foreach ($attributes as $name => $value) {
-            $this->{$name} = $value;
-        }
-    }
 }

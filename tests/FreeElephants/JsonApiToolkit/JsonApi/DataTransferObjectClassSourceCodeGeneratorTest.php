@@ -27,9 +27,7 @@ PHP;
 final class ArticlesResourceObject
 {
     public string \$id;
-
     public string \$type;
-
     public ArticlesAttributes \$attributes;
 }
 
