@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - Data Transfer Object classes generation from swagger spec
+- AbstractDocument::fromHttpMessage(), possible constructing DTO from Response and Requests both
+
+### Changed:
+- Mark AbstractDocument::__constructor as final
+
+### Deprecated
+- AbstractDocument::fromRequest, use fromHttpMessage instead
 
 ## [0.0.9] - 2020-07-08
 ### Added

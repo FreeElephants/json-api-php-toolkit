@@ -2,25 +2,37 @@
 
 namespace FreeElephants\JsonApiToolkit\DTO;
 
+use Psr\Http\Message\MessageInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
- * @property AbstractResourceObject $data
+ * @property AbstractResourceObject|mixed $data
  */
 abstract class AbstractDocument
 {
-    public function __construct(array $data)
+    final public function __construct(array $data)
     {
         $concreteClass = new \ReflectionClass($this);
         $dataProperty = $concreteClass->getProperty('data');
-        $dataClassName = $dataProperty->getType()->getName();
+        /** @var \ReflectionNamedType $reflectionType */
+        $reflectionType = $dataProperty->getType();
+        $dataClassName = $reflectionType->getName();
         $this->data = new $dataClassName($data['data']);
     }
 
-    public static function fromRequest(ServerRequestInterface $request): self
+    /**
+     * @deprecated
+     * @see AbstractDocument::fromHttpMessage() instead
+     */
+    public static function fromRequest(ServerRequestInterface $httpMessage): self
     {
-        $request->getBody()->rewind();
-        $rawJson = $request->getBody()->getContents();
+        return self::fromHttpMessage($httpMessage);
+    }
+
+    public static function fromHttpMessage(MessageInterface $httpMessage): self
+    {
+        $httpMessage->getBody()->rewind();
+        $rawJson = $httpMessage->getBody()->getContents();
         $decodedJson = json_decode($rawJson, true);
 
         return new static($decodedJson);

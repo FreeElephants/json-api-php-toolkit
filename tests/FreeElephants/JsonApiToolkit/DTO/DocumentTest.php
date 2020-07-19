@@ -30,7 +30,7 @@ class DocumentTest extends AbstractTestCase
 JSON
         );
 
-        $fooDTO = FooDocument::fromRequest($request);
+        $fooDTO = FooDocument::fromHttpMessage($request);
 
         $this->assertInstanceOf(FooResource::class, $fooDTO->data);
         $this->assertInstanceOf(FooAttributes::class, $fooDTO->data->attributes);
