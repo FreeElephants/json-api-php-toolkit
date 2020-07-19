@@ -8,12 +8,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Data Transfer Object classes generation from swagger spec
 - AbstractDocument::fromHttpMessage(), possible constructing DTO from Response and Requests both
+- PsrContainerAwareSchemaContainer for injection dependencies to neomerx Schemas
 
 ### Changed:
 - Mark AbstractDocument::__constructor as final
+- Extended neomerx Encoder and Factory don't use EntityManager, but use Psr\Container 
 
 ### Deprecated
 - AbstractDocument::fromRequest, use fromHttpMessage instead
+
+### Removed
+- DoctrineProxyAwareSchemaContainer, use PsrContainerAwareSchemaContainer: it is check Doctrine Proxies too. 
 
 ## [0.0.9] - 2020-07-08
 ### Added
