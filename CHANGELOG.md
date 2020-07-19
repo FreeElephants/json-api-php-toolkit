@@ -8,6 +8,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Data Transfer Object classes generation from swagger spec
 
+## [0.0.10] - 2020-07-19
+### Added
+- AbstractDocument::fromHttpMessage(), possible constructing DTO from Response and Requests both
+- PsrContainerAwareSchemaContainer for injection dependencies to neomerx Schemas
+
+### Changed:
+- Mark AbstractDocument::__constructor as final
+- Extended neomerx Encoder and Factory don't use EntityManager, but use Psr\Container 
+
+### Deprecated
+- AbstractDocument::fromRequest, use fromHttpMessage instead
+
+### Removed
+- DoctrineProxyAwareSchemaContainer, use PsrContainerAwareSchemaContainer: it is check Doctrine Proxies too. 
+
 ## [0.0.9] - 2020-07-08
 ### Added
 - Typed attributes fields support and nested key-value structures in DTO
@@ -67,8 +82,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - FastRoute Dispatcher generation from swagger operationIds
 
-[Unreleased]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.9...HEAD
-[0.0.8]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.8...0.0.9
+[Unreleased]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.10...HEAD
+[0.0.10]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.9...0.0.10
+[0.0.9]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.8...0.0.9
 [0.0.8]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.7...0.0.8
 [0.0.7]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.6...0.0.7
 [0.0.6]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.5...0.0.6

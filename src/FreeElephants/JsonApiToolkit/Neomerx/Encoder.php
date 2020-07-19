@@ -2,21 +2,21 @@
 
 namespace FreeElephants\JsonApiToolkit\Neomerx;
 
-use Doctrine\ORM\EntityManagerInterface;
 use Neomerx\JsonApi\Contracts\Factories\FactoryInterface;
 use Neomerx\JsonApi\Encoder\Encoder as NeomerxEncoder;
+use Psr\Container\ContainerInterface;
 
 class Encoder extends NeomerxEncoder
 {
-    private static EntityManagerInterface $entityManager;
+    private static ContainerInterface $container;
 
-    public static function setEntityManager(EntityManagerInterface $entityManager)
+    public static function setPsrContainer(ContainerInterface $container)
     {
-        self::$entityManager = $entityManager;
+        self::$container = $container;
     }
 
     protected static function createFactory(): FactoryInterface
     {
-        return new Factory(self::$entityManager);
+        return new Factory(self::$container);
     }
 }

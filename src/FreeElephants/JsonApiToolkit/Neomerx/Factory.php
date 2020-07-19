@@ -2,22 +2,21 @@
 
 namespace FreeElephants\JsonApiToolkit\Neomerx;
 
-use Doctrine\ORM\EntityManagerInterface;
-use FreeElephants\JsonApiToolkit\Neomerx\Doctrine\DoctrineProxyAwareSchemaContainer;
 use Neomerx\JsonApi\Contracts\Schema\SchemaContainerInterface;
 use Neomerx\JsonApi\Factories\Factory as NeomerxFactory;
+use Psr\Container\ContainerInterface;
 
 class Factory extends NeomerxFactory
 {
-    private EntityManagerInterface $entityManager;
+    private ContainerInterface $container;
 
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct(ContainerInterface $container)
     {
-        $this->entityManager = $entityManager;
+        $this->container = $container;
     }
 
     public function createSchemaContainer(iterable $schemas): SchemaContainerInterface
     {
-        return new DoctrineProxyAwareSchemaContainer($this->entityManager, $this, $schemas);
+        return new PsrContainerAwareSchemaContainer($this->container, $this, $schemas);
     }
 }
