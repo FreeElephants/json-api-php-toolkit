@@ -45,5 +45,6 @@ jobs:
         run: composer update --prefer-${{ matrix.prefer }} --prefer-dist --no-progress
 
       - name: Run tests
+        env:
+          XDEBUG_MODE: coverage
         run: vendor/bin/phpunit
-
