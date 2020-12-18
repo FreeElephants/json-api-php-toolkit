@@ -29,6 +29,9 @@ jobs:
       - name: Check PHP Version
         run: php -v
 
+      - name: Xdebug Action
+        uses: MilesChou/docker-xdebug@master
+
       - name: Cache Composer packages
         id: composer-cache
         uses: actions/cache@v2
