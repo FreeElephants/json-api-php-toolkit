@@ -5,8 +5,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
 ### Added
 - Data Transfer Object classes generation from swagger spec
+
+## [0.0.11] - 2020-12-18 
+### Added
+- CORSHeadersSetter Middleware
+- PHP 8 Support
+
+### Changed
+- Update dependencies
 
 ## [0.0.10] - 2020-07-19
 ### Added
