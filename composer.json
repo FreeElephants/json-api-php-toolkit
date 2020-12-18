@@ -36,7 +36,8 @@
     },
     "suggest": {
         "doctrine/orm": "^2.7",
-        "free-elephants/di": "*"
+        "free-elephants/di": "*",
+        "laminas/laminas-httphandlerrunner": "*"
     },
     "autoload": {
         "psr-4": {
