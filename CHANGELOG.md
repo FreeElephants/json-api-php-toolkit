@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - Data Transfer Object classes generation from swagger spec
+- CORSHeadersSetter Middleware
 
 ## [0.0.10] - 2020-07-19
 ### Added

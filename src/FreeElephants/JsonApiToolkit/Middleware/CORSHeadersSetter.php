@@ -11,14 +11,14 @@ class CORSHeadersSetter implements MiddlewareInterface
 {
     private string $accessControlAllowOriginHeaderValue;
 
+    public function __construct(string $accessControlAllowOriginHeaderValue = '*')
+    {
+        $this->accessControlAllowOriginHeaderValue = $accessControlAllowOriginHeaderValue;
+    }
+
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         return $handler->handle($request)
             ->withHeader('Access-Control-Allow-Origin', $this->accessControlAllowOriginHeaderValue);
-    }
-
-    public function __construct(string $accessControlAllowOriginHeaderValue = '*')
-    {
-        $this->accessControlAllowOriginHeaderValue = $accessControlAllowOriginHeaderValue;
     }
 }
