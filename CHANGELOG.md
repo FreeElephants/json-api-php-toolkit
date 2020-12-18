@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Data Transfer Object classes generation from swagger spec
 
+### Changed
+- Application implement RequestHandlerInterface
+- Require psr/http-factory
+
 ## [0.0.11] - 2020-12-18 
 ### Added
 - CORSHeadersSetter Middleware
@@ -91,7 +95,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - FastRoute Dispatcher generation from swagger operationIds
 
-[Unreleased]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.10...HEAD
+[Unreleased]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.11...HEAD
+[0.0.11]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.10...0.0.11
 [0.0.10]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.9...0.0.10
 [0.0.9]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.8...0.0.9
 [0.0.8]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.7...0.0.8
