@@ -20,15 +20,6 @@ abstract class AbstractDocument
         $this->data = new $dataClassName($data['data']);
     }
 
-    /**
-     * @deprecated
-     * @see AbstractDocument::fromHttpMessage() instead
-     */
-    public static function fromRequest(ServerRequestInterface $httpMessage): self
-    {
-        return self::fromHttpMessage($httpMessage);
-    }
-
     public static function fromHttpMessage(MessageInterface $httpMessage): self
     {
         $httpMessage->getBody()->rewind();

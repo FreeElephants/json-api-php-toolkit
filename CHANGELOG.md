@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Data Transfer Object classes generation from swagger spec
 
+### Removed
+- deprecated method AbstractDocument::fromRequest, use fromHttpMessage
+
 ## [0.0.12] - 2020-12-20
 ### Changed
 - Application implement RequestHandlerInterface
