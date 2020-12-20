@@ -21,14 +21,9 @@ abstract class AbstractDocument
     }
 
     /**
-     * @deprecated
-     * @see AbstractDocument::fromHttpMessage() instead
+     * @param MessageInterface $httpMessage
+     * @return static
      */
-    public static function fromRequest(ServerRequestInterface $httpMessage): self
-    {
-        return self::fromHttpMessage($httpMessage);
-    }
-
     public static function fromHttpMessage(MessageInterface $httpMessage): self
     {
         $httpMessage->getBody()->rewind();
