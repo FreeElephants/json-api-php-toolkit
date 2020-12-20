@@ -2,7 +2,7 @@
 
 [![Build Status](https://github.com/FreeElephants/json-api-php-toolkit/workflows/CI/badge.svg)](https://github.com/FreeElephants/json-api-php-toolkit/actions)
 [![codecov](https://codecov.io/gh/FreeElephants/json-api-php-toolkit/branch/master/graph/badge.svg)](https://codecov.io/gh/FreeElephants/json-api-php-toolkit)
-[![Installs](https://img.shields.io/packagist/dt/free-elephants/json-api-toolkit.svg)](https://packagist.org/packages/free-elephants/json-api-php-toolkit)
+[![Installs](https://img.shields.io/packagist/dt/free-elephants/json-api-toolkit.svg)](https://packagist.org/packages/free-elephants/json-api-toolkit)
 [![Releases](https://img.shields.io/packagist/v/free-elephants/json-api-toolkit.svg)](https://github.com/FreeElephants/json-api-php-toolkit/releases)
 
 ## Features: 
