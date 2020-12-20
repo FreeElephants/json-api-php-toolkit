@@ -24,6 +24,14 @@ class DocumentTest extends AbstractTestCase
                     "someKey": "someValue"
                 }
             }
+        },
+        "relationships": {
+            "baz": {
+                "data": {
+                    "type": "bazs",
+                    "id": "baz-id"
+                }
+            }
         }
     }
 }
@@ -37,7 +45,8 @@ JSON
         $this->assertSame('foo', $fooDTO->data->type);
         $this->assertSame('bar', $fooDTO->data->attributes->foo);
         $this->assertEquals(new \DateTime('2012-04-23T18:25:43.511Z'), $fooDTO->data->attributes->date);
-        $this->assertEquals('someValue', $fooDTO->data->attributes->nested->someNestedStructure->someKey);
+        $this->assertSame('someValue', $fooDTO->data->attributes->nested->someNestedStructure->someKey);
+        $this->assertSame('baz-id', $fooDTO->data->relationships->baz->data->id);
     }
 }
 
@@ -49,6 +58,7 @@ class FooDocument extends AbstractDocument
 class FooResource extends AbstractResourceObject
 {
     public FooAttributes $attributes;
+    public FooRelationships $relationships;
 }
 
 class FooAttributes extends AbstractAttributes
@@ -56,6 +66,11 @@ class FooAttributes extends AbstractAttributes
     public string $foo;
     public \DateTime $date;
     public Nested $nested;
+}
+
+class FooRelationships extends AbstractRelationships
+{
+    public RelationshipToOne $baz;
 }
 
 class Nested extends BaseKeyValueStructure
