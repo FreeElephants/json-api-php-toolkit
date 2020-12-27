@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Data Transfer Object classes generation from swagger spec
+- TraceIntoDetailsExplainingErrorFactory for catched ErrorHandler exceptions debug. Note: do not production usage. 
 
 ### Removed
 - deprecated method AbstractDocument::fromRequest, use fromHttpMessage
