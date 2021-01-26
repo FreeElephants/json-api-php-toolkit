@@ -25,7 +25,7 @@ class MethodAwareMiddlewarePipeFactory implements MiddlewarePipeFactoryInterface
      *          [
      *              'methods' => ['*'],
      *              'middleware' => [
-     *                  MiddlewareName::class => [$middlewareInstanceOptionA, $middlewareInstanceOptionB, ...],
+     *                  MiddlewareName1::class => [$middlewareInstanceOptionA, $middlewareInstanceOptionB, ...],
      *              ],
      *          ],
      *          [
@@ -34,8 +34,8 @@ class MethodAwareMiddlewarePipeFactory implements MiddlewarePipeFactoryInterface
      *                  'PATCH',
      *              ],
      *              'middleware' => [
-     *                  MiddlewareName::class => [$middlewareInstanceOptionA, $middlewareInstanceOptionB, ...],
-     *                  MiddlewareName::class => [$middlewareInstanceOptionA, $middlewareInstanceOptionB, ...],
+     *                  MiddlewareName1::class => [$middlewareInstanceOptionA, $middlewareInstanceOptionB, ...],
+     *                  MiddlewareName2::class => [$middlewareInstanceOptionA, $middlewareInstanceOptionB, ...],
      *              ],
      *          ],
      *          [
@@ -43,12 +43,31 @@ class MethodAwareMiddlewarePipeFactory implements MiddlewarePipeFactoryInterface
      *                  'GET', 'HEAD',
      *              ],
      *              'middleware' => [
-     *                  MiddlewareName::class => [$middlewareInstanceOptionA, $middlewareInstanceOptionB, ...],
-     *                  MiddlewareName::class => [$middlewareInstanceOptionA, $middlewareInstanceOptionB, ...],
+     *                  MiddlewareName1::class => [$middlewareInstanceOptionA, $middlewareInstanceOptionB, ...],
+     *                  MiddlewareName2::class => [$middlewareInstanceOptionA, $middlewareInstanceOptionB, ...],
+     *              ],
+     *          ],
+     *          [
+     *              'methods' => [
+     *                  'GET', 'HEAD',
+     *              ],
+     *              'middleware' => [
+     *                  [
+     *                      'class' => MiddlewareName1::class,
+     *                      'options' => $middlewareInstanceOptionA
+     *                  ],
+     *                  [
+     *                      'class' => MiddlewareName1::class,
+     *                      'options' => $middlewareInstanceOptionA
+     *                  ],
+     *                  [
+     *                      'class' => MiddlewareName1::class,
+     *                      'options' => [$middlewareInstanceOptionA, $middlewareInstanceOptionB, ...]
+     *                  ],
      *              ],
      *          ],
      *      ],
-     * ],.
+     * ]
      */
     public function create(ServerRequestInterface $request): MiddlewarePipeInterface
     {
@@ -58,7 +77,14 @@ class MethodAwareMiddlewarePipeFactory implements MiddlewarePipeFactoryInterface
                 $pathMethods = $group['methods'];
                 $pathMiddleware = $group['middleware'];
                 foreach ($pathMiddleware as $middlewareClass => $middlewareOptions) {
-                    $middleware = $this->middlewareFactory->create($middlewareClass, (array) $middlewareOptions);
+
+                    if (is_int($middlewareClass) && is_array($middlewareOptions)) {
+                        $middlewareClass = $middlewareOptions['class'];
+                        $middlewareOptions = $middlewareOptions['options'] ?? [];
+
+                    }
+
+                    $middleware = $this->middlewareFactory->create($middlewareClass, (array)$middlewareOptions);
                     if ($pathMethods === ['*']) {
                         $decorator = new RouteParamsPathMiddlewareDecorator($path, $middleware);
                     } else {
