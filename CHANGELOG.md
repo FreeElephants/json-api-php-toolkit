@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Data Transfer Object classes generation from swagger spec
 - CacheableDispatcherFactoryProxy
 - JsonApiResponseFactory::createRelationshipResponse()
+- RateLimitMiddleware and related packages
 
 ## [0.0.13] - 2021-01-27
 ### Added
