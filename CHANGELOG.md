@@ -8,8 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Data Transfer Object classes generation from swagger spec
-- TraceIntoDetailsExplainingErrorFactory for catched ErrorHandler exceptions debug. Note: not for production usage.
-- Using the same middleware twice.
+
+## [0.0.13] - 2021-01-27
+### Added
+- TraceIntoDetailsExplainingErrorFactory for catched ErrorHandler exceptions debug. Note: not for production usage
+- Using the same middleware twice
+
+### Changed
+- Fix cebe/php-openapi version for best php versions support
 
 ### Removed
 - Deprecated method AbstractDocument::fromRequest, use fromHttpMessage
@@ -101,7 +107,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - FastRoute Dispatcher generation from swagger operationIds
 
-[Unreleased]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.12...HEAD
+[Unreleased]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.13...HEAD
+[0.0.13]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.12...0.0.13
 [0.0.12]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.11...0.0.12
 [0.0.11]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.10...0.0.11
 [0.0.10]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.9...0.0.10
