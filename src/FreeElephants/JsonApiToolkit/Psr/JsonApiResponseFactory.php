@@ -50,6 +50,17 @@ class JsonApiResponseFactory
         return $response;
     }
 
+    public function createRelationshipResponse($data): ResponseInterface
+    {
+        $content = $this->encoder->encodeIdentifiers($data);
+
+        $response = $this->createPsrResponse();
+        $response->getBody()->write($content);
+        $response->getBody()->rewind();
+
+        return $response;
+    }
+
     public function createErrorResponse(ErrorCollection $errors, int $status): ResponseInterface
     {
         $response = $this->createPsrResponse($status);
