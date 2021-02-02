@@ -8,10 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Data Transfer Object classes generation from swagger spec
+
+## [0.0.14] - 2021-02-02
+### Added
 - Route info in the request attribute
 - CacheableDispatcherFactoryProxy
 - JsonApiResponseFactory::createRelationshipResponse()
 - RateLimitMiddleware and related packages
+
 
 ## [0.0.13] - 2021-01-27
 ### Added
@@ -111,7 +115,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - FastRoute Dispatcher generation from swagger operationIds
 
-[Unreleased]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.13...HEAD
+[Unreleased]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.14...HEAD
+[0.0.14]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.13...0.0.14
 [0.0.13]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.12...0.0.13
 [0.0.12]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.11...0.0.12
 [0.0.11]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.10...0.0.11
