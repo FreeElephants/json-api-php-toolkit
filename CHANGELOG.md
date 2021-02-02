@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Data Transfer Object classes generation from swagger spec
+- Route info in the request attribute
 - CacheableDispatcherFactoryProxy
 - JsonApiResponseFactory::createRelationshipResponse()
 - RateLimitMiddleware and related packages
