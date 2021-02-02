@@ -2,6 +2,7 @@ FROM php:8-cli
 
 RUN apt-get update \
     && apt-get install -y \
+    git \
     libzip-dev \
     unzip \
     libicu-dev
