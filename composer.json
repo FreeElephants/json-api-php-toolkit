@@ -14,7 +14,7 @@
     "require": {
         "ext-intl": "*",
         "ext-json": "*",
-        "cebe/php-openapi": "~1.4",
+        "cebe/php-openapi": "1.4.*",
         "fig/http-message-util": "^1.1",
         "free-elephants/i18n": "^0.0.1",
         "laminas/laminas-stratigility": "^3.2",
