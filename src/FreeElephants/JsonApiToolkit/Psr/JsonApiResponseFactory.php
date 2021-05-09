@@ -22,26 +22,31 @@ class JsonApiResponseFactory
         $this->errorFactory = $errorFactory;
     }
 
-    public function createResponse($data, ServerRequestInterface $request = null): ResponseInterface
+    public function createResponse($data, ServerRequestInterface $request = null, $meta = null, array $links = []): ResponseInterface
     {
         $includedPath = [];
-        if ($request) {
-            $queryParams = $request->getQueryParams();
-            if (array_key_exists('include', $queryParams)) {
-                $includedPath = explode(',', $queryParams['include']);
-            }
-        }
-
         $fieldSets = [];
         if ($request) {
             $queryParams = $request->getQueryParams();
+
+            if (array_key_exists('include', $queryParams)) {
+                $includedPath = explode(',', $queryParams['include']);
+            }
+
             if (array_key_exists('fields', $queryParams)) {
                 foreach ($queryParams['fields'] as $type => $typeFieldsString) {
                     $fieldSets[$type] = explode(',', $typeFieldsString);
                 }
             }
         }
-        $content = $this->encoder->withIncludedPaths($includedPath)->withFieldSets($fieldSets)->encodeData($data);
+
+        $encoder = $this->encoder
+            ->withIncludedPaths($includedPath)
+            ->withFieldSets($fieldSets)
+            ->withMeta($meta)
+            ->withLinks($links);
+
+        $content = $encoder->encodeData($data);
 
         $response = $this->createPsrResponse();
         $response->getBody()->write($content);
