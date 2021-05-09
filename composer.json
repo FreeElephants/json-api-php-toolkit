@@ -32,7 +32,6 @@
         "ramsey/uuid": "^3.0|^4.0"
     },
     "require-dev": {
-        "doctrine/orm": "^2.7",
         "helmich/phpunit-psr7-assert": "^4",
         "nyholm/psr7": "^1.2",
         "phpunit/phpunit": "^9.0"
