@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - JsonApiResponseFactory::createResponse() `meta` and `links` arguments 
 - CacheableDispatcherFactoryProxy
 
+### Changed
+- Best composer dependencies compatibility: allow more versions
+
 ## [0.0.13] - 2021-01-27
 ### Added
 - TraceIntoDetailsExplainingErrorFactory for catched ErrorHandler exceptions debug. Note: not for production usage
