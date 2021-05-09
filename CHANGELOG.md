@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Data Transfer Object classes generation from swagger spec
+- JsonApiResponseFactory::createResponse() `meta` and `links` arguments 
 
 ## [0.0.13] - 2021-01-27
 ### Added
