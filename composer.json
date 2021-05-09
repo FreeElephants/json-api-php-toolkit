@@ -18,7 +18,7 @@
         "fig/http-message-util": "^1.0",
         "free-elephants/i18n": "^0.0.1",
         "laminas/laminas-stratigility": "^3.2",
-        "league/openapi-psr7-validator": "0.14|^0.15",
+        "league/openapi-psr7-validator": "0.14|^0.15|^0.16",
         "neomerx/json-api": "^4.0",
         "nette/php-generator": "^3.4",
         "nikic/fast-route": "^1.3",
