@@ -3,7 +3,6 @@
 namespace FreeElephants\JsonApiToolkit\DTO;
 
 use Psr\Http\Message\MessageInterface;
-use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * @property AbstractResourceObject|mixed $data

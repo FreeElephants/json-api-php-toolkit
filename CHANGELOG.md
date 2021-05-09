@@ -11,13 +11,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - JsonApiResponseFactory::createResponse() `meta` and `links` arguments 
 - CacheableDispatcherFactoryProxy
 
+### Changed
+- Best composer dependencies compatibility: allow more versions
+
 ## [0.0.14] - 2021-02-02
 ### Added
 - Route info in the request attribute
 - CacheableDispatcherFactoryProxy
 - JsonApiResponseFactory::createRelationshipResponse()
 - RateLimitMiddleware and related packages
-
 
 ## [0.0.13] - 2021-01-27
 ### Added
