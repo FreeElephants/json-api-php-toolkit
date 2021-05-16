@@ -4,9 +4,9 @@ namespace FreeElephants\JsonApiToolkit\DTO;
 
 use FreeElephants\JsonApiToolkit\AbstractTestCase;
 
-class ResourceObjectTestPHP8 extends AbstractTestCase
+class ResourceObjectTest extends AbstractTestCase
 {
-    public function testUnionTypes()
+    public function testRelationshipTypes()
     {
         $resourceObject = new class([
             'id'            => 'id',
@@ -22,11 +22,12 @@ class ResourceObjectTestPHP8 extends AbstractTestCase
                     ],
                 ],
             ],
-        ]) extends AbstractResourceObject{
+        ]) extends AbstractResourceObject {
             public Attributes $attributes;
-            public OneRelationships|TwoRelationships $relationships;
+            public OneRelationships $relationships;
         };
 
+        $this->assertInstanceOf(OneRelationships::class, $resourceObject->relationships);
         $this->assertSame('one', $resourceObject->relationships->one->data->type);
     }
 }
