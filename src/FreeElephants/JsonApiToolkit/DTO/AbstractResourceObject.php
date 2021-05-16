@@ -32,12 +32,13 @@ class AbstractResourceObject
             $relationshipsProperty = $concreteClass->getProperty('relationships');
             $reflectionType = $relationshipsProperty->getType();
 
-            if ($reflectionType instanceof \ReflectionType) {
-                $relationshipsClass = $reflectionType->getName();
-            } elseif (class_exists(\ReflectionUnionType::class) && $reflectionType instanceof \ReflectionUnionType) {
-                // handle php 8 union types
+            // handle php 8 union types
+            if (class_exists(\ReflectionUnionType::class) && $reflectionType instanceof \ReflectionUnionType) {
                 $relationshipsClass = (new SuitableRelationshipsTypeDetector())->detect($reflectionType, $relationshipsData);
+            } else {
+                $relationshipsClass = $reflectionType->getName();
             }
+
             $relationshipsDto = new $relationshipsClass($relationshipsData);
             $this->relationships = $relationshipsDto;
         }
