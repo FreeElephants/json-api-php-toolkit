@@ -4,7 +4,7 @@ namespace FreeElephants\JsonApiToolkit\DTO;
 
 use FreeElephants\JsonApiToolkit\AbstractTestCase;
 
-class ResourceObjectTest extends AbstractTestCase
+class ResourceObjectTestPHP8 extends AbstractTestCase
 {
     public function testUnionTypes()
     {
@@ -50,3 +50,4 @@ class TwoRelationships extends AbstractRelationships
 {
     public RelationshipToOne $two;
 }
+
