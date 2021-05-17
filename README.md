@@ -28,3 +28,9 @@ Available in [/docs](/docs).
 1. [Serialize doctrine entities](/docs/doctrine.md)
 1. [DTO from psr server request](/docs/dto-psr7.md)
 1. [Validation](/docs/validation.md)
+
+## Development
+
+All dev env is dockerized. Your can use make receipts and `bin/` scripts without locally installed php, composer. 
+
+For run tests with different php version change `PHP_VERSION` value in .env and rebuild image with `make build`.  

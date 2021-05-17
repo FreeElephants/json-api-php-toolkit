@@ -11,7 +11,7 @@ class DataTransferObjectClassSourceCodeGeneratorTest extends AbstractTestCase
     public function testGenerate()
     {
         $generator = new DataTransferObjectClassSourceCodeGenerator();
-        $openapi = (new YamlFileParser())->parse(self::FIXTERE_PATH . '/json-api.yml');
+        $openapi = (new YamlFileParser())->parse(self::FIXTURE_PATH . '/json-api.yml');
 
         $set = $generator->generate($openapi, 'articles');
         $expectedDocumentSourceCode = <<<PHP

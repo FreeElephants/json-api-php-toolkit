@@ -60,3 +60,8 @@ JSON
 
 (new DispatcherFactory(null, new Parsers\JsonFileParser()))->buildDispatcher('swagger.json');
 ```
+
+## About performance
+
+Parse large swagger files have performance issues. Use `FreeElephants\JsonApiToolkit\Routing\FastRoute\CacheableDispatcherFactoryProxy` for production usage: it based on psr/cache component compare swagger file hash.
+

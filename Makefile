@@ -1,7 +1,9 @@
 PATH := $(shell pwd)/bin:$(PATH)
+$(shell cp -n dev.env .env)
+include .env
 
 build:
-	docker build -t free-elephants/json-api-php-toolkit .
+	docker build --build-arg PHP_VERSION=${PHP_VERSION} -t free-elephants/json-api-php-toolkit .
 
 install: build
 	composer install
