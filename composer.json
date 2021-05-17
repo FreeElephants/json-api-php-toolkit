@@ -39,7 +39,8 @@
     "suggest": {
         "doctrine/orm": "^2.7",
         "free-elephants/di": "*",
-        "laminas/laminas-httphandlerrunner": "*"
+        "laminas/laminas-httphandlerrunner": "*",
+        "nyholm/psr7": "^1.2"
     },
     "autoload": {
         "psr-4": {
