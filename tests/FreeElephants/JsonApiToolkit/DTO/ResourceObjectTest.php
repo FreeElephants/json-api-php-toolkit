@@ -23,11 +23,11 @@ class ResourceObjectTest extends AbstractTestCase
                 ],
             ],
         ]) extends AbstractResourceObject {
-            public Attributes $attributes;
-            public OneRelationships $relationships;
+            public Example\Attributes $attributes;
+            public Example\OneRelationships $relationships;
         };
 
-        $this->assertInstanceOf(OneRelationships::class, $resourceObject->relationships);
+        $this->assertInstanceOf(Example\OneRelationships::class, $resourceObject->relationships);
         $this->assertSame('one', $resourceObject->relationships->one->data->type);
     }
 }
@@ -36,15 +36,3 @@ class Attributes extends AbstractAttributes
 {
     public string $foo;
 }
-
-class OneRelationships extends AbstractRelationships
-{
-    public RelationshipToOne $one;
-}
-
-
-class TwoRelationships extends AbstractRelationships
-{
-    public RelationshipToOne $two;
-}
-
