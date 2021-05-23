@@ -14,7 +14,7 @@
     "require": {
         "ext-intl": "*",
         "ext-json": "*",
-        "cebe/php-openapi": "1.4.*",
+        "cebe/php-openapi": "^1.4",
         "doctrine/persistence": "^2.0",
         "fig/http-message-util": "^1.0",
         "free-elephants/i18n": "^0.0.1",
@@ -36,6 +36,9 @@
         "helmich/phpunit-psr7-assert": "^4",
         "nyholm/psr7": "^1.2",
         "phpunit/phpunit": "^9.0"
+    },
+    "conflict": {
+        "cebe/php-openapi": "1.5.0 || 1.5.1"
     },
     "suggest": {
         "doctrine/orm": "^2.7",
