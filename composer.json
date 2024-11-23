@@ -14,13 +14,13 @@
     "require": {
         "ext-intl": "*",
         "ext-json": "*",
-        "cebe/php-openapi": "^1.4",
-        "doctrine/persistence": "^2.0",
+        "devizzent/cebe-php-openapi": "^1.0",
+        "doctrine/persistence": "^2.0|^3.0",
         "fig/http-message-util": "^1.0",
         "free-elephants/i18n": "^0.0.1",
         "laminas/laminas-stratigility": "^3.2",
-        "league/openapi-psr7-validator": "0.14|^0.15|^0.16",
-        "neomerx/json-api": "^4.0",
+        "laravel-json-api/neomerx-json-api": "^5.0.2",
+        "league/openapi-psr7-validator": "0.19 - 0.22",
         "nette/php-generator": "^3.4",
         "nikic/fast-route": "^1.3",
         "psr/cache": "^1|^2|^3",
@@ -30,15 +30,12 @@
         "psr/http-server-handler": "^1.0",
         "psr/http-server-middleware": "^1.0",
         "rakit/validation": "^1.2",
-        "ramsey/uuid": "^3.0|^4.0"
+        "ramsey/uuid": "^3.9.7|^4.0"
     },
     "require-dev": {
         "helmich/phpunit-psr7-assert": "^4",
         "nyholm/psr7": "^1.2",
         "phpunit/phpunit": "^9.0"
-    },
-    "conflict": {
-        "cebe/php-openapi": "1.5.0 || 1.5.1"
     },
     "suggest": {
         "doctrine/orm": "^2.7",

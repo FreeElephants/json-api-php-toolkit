@@ -33,7 +33,7 @@ class AbstractResourceObject
             $reflectionType = $relationshipsProperty->getType();
 
             // handle php 8 union types
-            if (class_exists(\ReflectionUnionType::class) && $reflectionType instanceof \ReflectionUnionType) {
+            if ($reflectionType instanceof \ReflectionUnionType) {
                 $relationshipsClass = (new SuitableRelationshipsTypeDetector())->detect($reflectionType, $relationshipsData);
             } else {
                 $relationshipsClass = $reflectionType->getName();

@@ -9,7 +9,7 @@ use FreeElephants\JsonApiToolkit\DTO\AbstractResourceObject;
 use FreeElephants\JsonApiToolkit\DTO\RelationshipToOne;
 use ReflectionProperty;
 
-class SuitableRelationshipsTypeDetectorTestPHP8 extends AbstractTestCase
+class SuitableRelationshipsTypeDetectorTest extends AbstractTestCase
 {
 
     public function testDetect()

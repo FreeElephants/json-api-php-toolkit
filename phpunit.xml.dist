@@ -12,13 +12,8 @@
   <php>
     <ini name="error_reporting" value="E_ALL"/>
   </php>
-  <testsuites>
-    <testsuite name="8.0">
-      <directory suffix="TestPHP8.php" phpVersion="8.0">./tests</directory>
+    <testsuite name="">
+        <directory>tests/</directory>
     </testsuite>
-    <testsuite name="7.4">
-      <directory suffix="Test.php" phpVersion="7.4">./tests</directory>
-    </testsuite>
-  </testsuites>
   <logging/>
 </phpunit>
