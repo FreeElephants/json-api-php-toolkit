@@ -15,6 +15,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Best composer dependencies compatibility: allow more versions
 
+## Removed
+- php 7.4 support
+
 ## [0.0.13] - 2021-01-27
 ### Added
 - TraceIntoDetailsExplainingErrorFactory for catched ErrorHandler exceptions debug. Note: not for production usage
