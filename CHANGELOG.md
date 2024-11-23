@@ -16,7 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Best composer dependencies compatibility: allow more versions
 
 ## Removed
-- php 7.4 support
+- php 7.4 and 8.0 support
 
 ## [0.0.14] - 2021-02-02
 ### Added

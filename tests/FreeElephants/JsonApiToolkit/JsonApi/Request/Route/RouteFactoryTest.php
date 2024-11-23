@@ -19,10 +19,10 @@ class RouteFactoryTest extends TestCase
         $this->assertTrue(is_a($actual, $expected));
     }
 
-    public function correctDataProvider()
+    public static function correctDataProvider(): array
     {
-        $routeRulesProviderWithoutApiVersion = $this->getRouteRulesProviderWithoutApiVersion();
-        $routeRulesProviderWithApiVersion = $this->getRouteRulesProviderWithApiVersion();
+        $routeRulesProviderWithoutApiVersion = self::getRouteRulesProviderWithoutApiVersion();
+        $routeRulesProviderWithApiVersion = self::getRouteRulesProviderWithApiVersion();
         $uuid = Uuid::uuid4()->toString();
 
         return [
@@ -49,10 +49,10 @@ class RouteFactoryTest extends TestCase
         $factory->create($path);
     }
 
-    public function incorrectDataProvider()
+    public static function incorrectDataProvider(): array
     {
-        $routeRulesProviderWithoutApiVersion = $this->getRouteRulesProviderWithoutApiVersion();
-        $routeRulesProviderWithApiVersion = $this->getRouteRulesProviderWithApiVersion();
+        $routeRulesProviderWithoutApiVersion = self::getRouteRulesProviderWithoutApiVersion();
+        $routeRulesProviderWithApiVersion = self::getRouteRulesProviderWithApiVersion();
         $uuid = Uuid::uuid4()->toString();
 
         return [
@@ -91,7 +91,7 @@ class RouteFactoryTest extends TestCase
         );
     }
 
-    private function getRouteRulesProviderWithoutApiVersion(): RouteRulesProvider
+    private static function getRouteRulesProviderWithoutApiVersion(): RouteRulesProvider
     {
         $resourceRegex = '([a-z][A-Za-z\d]+)';
         $hexRegex = '[\da-f]';
@@ -108,7 +108,7 @@ class RouteFactoryTest extends TestCase
         );
     }
 
-    private function getRouteRulesProviderWithApiVersion(): RouteRulesProvider
+    private static function getRouteRulesProviderWithApiVersion(): RouteRulesProvider
     {
         $versionRegex = '(v\d+)';
         $resourceRegex = '([a-z][A-Za-z\d]+)';
