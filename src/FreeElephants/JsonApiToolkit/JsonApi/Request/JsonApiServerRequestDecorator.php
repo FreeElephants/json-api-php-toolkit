@@ -20,122 +20,122 @@ class JsonApiServerRequestDecorator implements JsonApiServerRequestInterface
         $this->request = $request;
     }
 
-    public function getProtocolVersion()
+    public function getProtocolVersion(): string
     {
         return $this->request->getProtocolVersion();
     }
 
-    public function withProtocolVersion($version)
+    public function withProtocolVersion($version): \Psr\Http\Message\MessageInterface
     {
         return $this->request->withProtocolVersion($version);
     }
 
-    public function getHeaders()
+    public function getHeaders(): array
     {
         return $this->request->getHeaders();
     }
 
-    public function hasHeader($name)
+    public function hasHeader($name): bool
     {
         return $this->request->hasHeader($name);
     }
 
-    public function getHeader($name)
+    public function getHeader($name): array
     {
         return $this->request->getHeader($name);
     }
 
-    public function getHeaderLine($name)
+    public function getHeaderLine($name): string
     {
         return $this->request->getHeaderLine($name);
     }
 
-    public function withHeader($name, $value)
+    public function withHeader($name, $value): \Psr\Http\Message\MessageInterface
     {
         return $this->request->withHeader($name, $value);
     }
 
-    public function withAddedHeader($name, $value)
+    public function withAddedHeader($name, $value): \Psr\Http\Message\MessageInterface
     {
         return $this->request->withAddedHeader($name, $value);
     }
 
-    public function withoutHeader($name)
+    public function withoutHeader($name): \Psr\Http\Message\MessageInterface
     {
         return $this->request->withoutHeader($name);
     }
 
-    public function getBody()
+    public function getBody(): StreamInterface
     {
         return $this->request->getBody();
     }
 
-    public function withBody(StreamInterface $body)
+    public function withBody(StreamInterface $body): \Psr\Http\Message\MessageInterface
     {
         return $this->request->withBody($body);
     }
 
-    public function getRequestTarget()
+    public function getRequestTarget(): string
     {
         return $this->request->getRequestTarget();
     }
 
-    public function withRequestTarget($requestTarget)
+    public function withRequestTarget($requestTarget): \Psr\Http\Message\RequestInterface
     {
         return $this->request->withRequestTarget($requestTarget);
     }
 
-    public function getMethod()
+    public function getMethod(): string
     {
         return $this->request->getMethod();
     }
 
-    public function withMethod($method)
+    public function withMethod($method): \Psr\Http\Message\RequestInterface
     {
         return $this->request->withMethod($method);
     }
 
-    public function getUri()
+    public function getUri(): UriInterface
     {
         return $this->request->getUri();
     }
 
-    public function withUri(UriInterface $uri, $preserveHost = false)
+    public function withUri(UriInterface $uri, $preserveHost = false): \Psr\Http\Message\RequestInterface
     {
         return $this->request->withUri($uri, $preserveHost);
     }
 
-    public function getServerParams()
+    public function getServerParams(): array
     {
         return $this->request->getServerParams();
     }
 
-    public function getCookieParams()
+    public function getCookieParams(): array
     {
         return $this->request->getCookieParams();
     }
 
-    public function withCookieParams(array $cookies)
+    public function withCookieParams(array $cookies): ServerRequestInterface
     {
         return $this->request->withCookieParams($cookies);
     }
 
-    public function getQueryParams()
+    public function getQueryParams(): array
     {
         return $this->request->getQueryParams();
     }
 
-    public function withQueryParams(array $query)
+    public function withQueryParams(array $query): ServerRequestInterface
     {
         return $this->request->withQueryParams($query);
     }
 
-    public function getUploadedFiles()
+    public function getUploadedFiles(): array
     {
         return $this->request->getUploadedFiles();
     }
 
-    public function withUploadedFiles(array $uploadedFiles)
+    public function withUploadedFiles(array $uploadedFiles): ServerRequestInterface
     {
         return $this->request->withUploadedFiles($uploadedFiles);
     }
@@ -145,12 +145,12 @@ class JsonApiServerRequestDecorator implements JsonApiServerRequestInterface
         return $this->request->getParsedBody();
     }
 
-    public function withParsedBody($data)
+    public function withParsedBody($data): ServerRequestInterface
     {
         return $this->request->withParsedBody($data);
     }
 
-    public function getAttributes()
+    public function getAttributes(): array
     {
         return $this->request->getAttributes();
     }
@@ -160,12 +160,12 @@ class JsonApiServerRequestDecorator implements JsonApiServerRequestInterface
         return $this->request->getAttribute($name, $default);
     }
 
-    public function withAttribute($name, $value)
+    public function withAttribute($name, $value): ServerRequestInterface
     {
         return $this->request->withAttribute($name, $value);
     }
 
-    public function withoutAttribute($name)
+    public function withoutAttribute($name): ServerRequestInterface
     {
         return $this->request->withoutAttribute($name);
     }

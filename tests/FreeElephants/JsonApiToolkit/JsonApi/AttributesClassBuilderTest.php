@@ -11,7 +11,7 @@ class AttributesClassBuilderTest extends AbstractTestCase
 
     public function testCollect()
     {
-        $openapi = (new YamlFileParser())->parse(self::FIXTERE_PATH . '/json-api-simple-attributes-mapping-example.yml');
+        $openapi = (new YamlFileParser())->parse(self::FIXTURE_PATH . '/json-api-simple-attributes-mapping-example.yml');
         $collector = new AttributesClassBuilder();
         $attributesClass = $collector->buildClass($openapi, 'articles');
         $expectedAttributesSourceCode = <<<PHP

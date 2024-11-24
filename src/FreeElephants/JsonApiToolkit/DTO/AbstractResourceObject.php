@@ -2,8 +2,10 @@
 
 namespace FreeElephants\JsonApiToolkit\DTO;
 
+use FreeElephants\JsonApiToolkit\DTO\Reflection\SuitableRelationshipsTypeDetector;
+
 /**
- * @property AbstractAttributes    $attributes
+ * @property AbstractAttributes $attributes
  * @property AbstractRelationships $relationships
  */
 class AbstractResourceObject
@@ -25,10 +27,20 @@ class AbstractResourceObject
         }
 
         if (property_exists($this, 'relationships')) {
+            $relationshipsData = $data['relationships'];
             $concreteClass = new \ReflectionClass($this);
             $relationshipsProperty = $concreteClass->getProperty('relationships');
-            $relationshipsClass = $relationshipsProperty->getType()->getName();
-            $this->relationships = new $relationshipsClass($data['relationships']);
+            $reflectionType = $relationshipsProperty->getType();
+
+            // handle php 8 union types
+            if ($reflectionType instanceof \ReflectionUnionType) {
+                $relationshipsClass = (new SuitableRelationshipsTypeDetector())->detect($reflectionType, $relationshipsData);
+            } else {
+                $relationshipsClass = $reflectionType->getName();
+            }
+
+            $relationshipsDto = new $relationshipsClass($relationshipsData);
+            $this->relationships = $relationshipsDto;
         }
     }
 }

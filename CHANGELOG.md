@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Data Transfer Object classes generation from swagger spec
 - JsonApiResponseFactory::createResponse() `meta` and `links` arguments 
+- CacheableDispatcherFactoryProxy
+- Union types support for `data.relationships` DTO: use suitable type for input data structure 
+
+### Changed
+- Best composer dependencies compatibility: allow more versions
+
+## Removed
+- php 7.4 and 8.0 support
 
 ## [0.0.14] - 2021-02-02
 ### Added
@@ -16,7 +24,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - CacheableDispatcherFactoryProxy
 - JsonApiResponseFactory::createRelationshipResponse()
 - RateLimitMiddleware and related packages
-
 
 ## [0.0.13] - 2021-01-27
 ### Added

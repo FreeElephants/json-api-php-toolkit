@@ -8,7 +8,7 @@ use League\OpenAPIValidation\PSR7\ValidatorBuilder;
 class SwaggerSpecificationRequestValidatorTest extends AbstractHttpTestCase
 {
 
-    private const SWAGGER_FILE = self::FIXTERE_PATH . '/swagger-example-for-request-validation.yml';
+    private const SWAGGER_FILE = self::FIXTURE_PATH . '/swagger-example-for-request-validation.yml';
 
     public function testProcessSuccess()
     {

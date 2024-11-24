@@ -19,6 +19,8 @@ class ErrorFactoryTest extends AbstractTestCase
 
         $throwable = new Exception('Hello, world!', 100500);
         $request = $this->createMock(ServerRequestInterface::class);
+        // Prevent return null instead string
+        $request->method('getHeaderLine')->willReturn('');
 
         $errorFactory = new ErrorFactory($translatorRegistry);
         $error = $errorFactory->fromThrowable($throwable, 200, $request, ['pointer']);
@@ -37,6 +39,8 @@ class ErrorFactoryTest extends AbstractTestCase
         $translatorRegistry->method('getTranslator')->willReturn($translator);
 
         $request = $this->createMock(ServerRequestInterface::class);
+        // Prevent return null instead string
+        $request->method('getHeaderLine')->willReturn('');
 
         $errorFactory = new ErrorFactory($translatorRegistry);
         $error = $errorFactory->createError('Hello, world!', 200, $request, ['pointer']);

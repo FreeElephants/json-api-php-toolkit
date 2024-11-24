@@ -10,7 +10,7 @@ class AttributesSchemaBuilderTest extends AbstractTestCase
 
     public function testBuild()
     {
-        $openapi = (new YamlFileParser())->parse(self::FIXTERE_PATH . '/json-api-simple-attributes-mapping-example.yml');
+        $openapi = (new YamlFileParser())->parse(self::FIXTURE_PATH . '/json-api-simple-attributes-mapping-example.yml');
         $attributesSchemaBuilder = new AttributesSchemaBuilder();
         $schema = $attributesSchemaBuilder->build($openapi, 'articles');
         $this->assertTrue($schema->hasAttribute('title'));
@@ -20,7 +20,7 @@ class AttributesSchemaBuilderTest extends AbstractTestCase
     public function testBuildFromAllOf()
     {
         $this->markTestIncomplete();
-        $openapi = (new YamlFileParser())->parse(self::FIXTERE_PATH . '/json-api.yml');
+        $openapi = (new YamlFileParser())->parse(self::FIXTURE_PATH . '/json-api.yml');
         $attributesSchemaBuilder = new AttributesSchemaBuilder();
         $schema = $attributesSchemaBuilder->build($openapi, 'people');
         $this->assertTrue($schema->hasAttribute('first-name'));

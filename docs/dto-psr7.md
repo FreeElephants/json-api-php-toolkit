@@ -3,3 +3,5 @@
 Full typed objects from request or response body.
 
 See example in [test](/tests/FreeElephants/JsonApiToolkit/DTO/DocumentTest.php). 
+
+Union types support for relationships in PHP 8. 
