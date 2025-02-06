@@ -31,8 +31,3 @@ class ResourceObjectTest extends AbstractTestCase
         $this->assertSame('one', $resourceObject->relationships->one->data->type);
     }
 }
-
-class Attributes extends AbstractAttributes
-{
-    public string $foo;
-}

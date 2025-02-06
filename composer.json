@@ -43,6 +43,9 @@
         "laminas/laminas-httphandlerrunner": "*",
         "nyholm/psr7": "^1.2"
     },
+    "conflict": {
+        "neomerx/json-api": "*"
+    },
     "autoload": {
         "psr-4": {
             "FreeElephants\\": [
