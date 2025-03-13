@@ -7,5 +7,5 @@ use FreeElephants\JsonApiToolkit\DTO\RelationshipToOne;
 
 class OneRelationships extends AbstractRelationships
 {
-    public RelationshipToOne $one;
+    public \FreeElephants\JsonApi\DTO\RelationshipToOne $one;
 }

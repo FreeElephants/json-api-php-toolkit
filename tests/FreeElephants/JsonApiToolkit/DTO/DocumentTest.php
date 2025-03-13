@@ -70,7 +70,7 @@ class FooAttributes extends AbstractAttributes
 
 class FooRelationships extends AbstractRelationships
 {
-    public RelationshipToOne $baz;
+    public \FreeElephants\JsonApi\DTO\RelationshipToOne $baz;
 }
 
 class Nested extends BaseKeyValueStructure

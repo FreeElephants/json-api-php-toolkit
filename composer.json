@@ -18,6 +18,7 @@
         "doctrine/persistence": "^2.0|^3.0",
         "fig/http-message-util": "^1.0",
         "free-elephants/i18n": "^0.0.1",
+        "free-elephants/json-api-dto": "^0.0.1",
         "laminas/laminas-stratigility": "^3.2",
         "laravel-json-api/neomerx-json-api": "^5.0.2",
         "league/openapi-psr7-validator": "0.19 - 0.22",
