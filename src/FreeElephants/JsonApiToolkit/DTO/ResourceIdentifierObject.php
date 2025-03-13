@@ -2,14 +2,10 @@
 
 namespace FreeElephants\JsonApiToolkit\DTO;
 
-class ResourceIdentifierObject
+/**
+ * @deprecated
+ * @see \FreeElephants\JsonApi\DTO\ResourceIdentifierObject
+ */
+class ResourceIdentifierObject extends \FreeElephants\JsonApi\DTO\ResourceIdentifierObject
 {
-    public string $id;
-    public string $type;
-
-    public function __construct(array $data)
-    {
-        $this->id = $data['id'];
-        $this->type = $data['type'];
-    }
 }

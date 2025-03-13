@@ -2,12 +2,10 @@
 
 namespace FreeElephants\JsonApiToolkit\DTO;
 
-abstract class AbstractRelationships
+/**
+ * @deprecated
+ * @see \FreeElephants\JsonApi\DTO\AbstractRelationships
+ */
+abstract class AbstractRelationships extends \FreeElephants\JsonApi\DTO\AbstractRelationships
 {
-    public function __construct(array $data)
-    {
-        foreach ($data as $relationshipName => $relationshipsData) {
-            $this->{$relationshipName} = new RelationshipToOne($relationshipsData);
-        }
-    }
 }

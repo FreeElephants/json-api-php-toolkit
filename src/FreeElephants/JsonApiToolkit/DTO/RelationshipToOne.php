@@ -2,7 +2,10 @@
 
 namespace FreeElephants\JsonApiToolkit\DTO;
 
-class RelationshipToOne extends AbstractDocument
+/**
+ * @deprecated
+ * @see \FreeElephants\JsonApi\DTO\RelationshipToOne
+ */
+class RelationshipToOne extends \FreeElephants\JsonApi\DTO\RelationshipToOne
 {
-    public ResourceIdentifierObject $data;
 }

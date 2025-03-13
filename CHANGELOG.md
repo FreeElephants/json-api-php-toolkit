@@ -6,8 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Deprecated
+- mark classes in namespace FreeElephants\JsonApiToolkit\DTO are deprecated 
+
 ### Changed
 - Add conflict with origin neomerx/json-api (use fork laravel-json-api/neomerx-json-api for best php 8.* support)
+- Use DTO from free-elephants/json-api-dto
 
 ## [0.0.15] - 2025-02-06
 
