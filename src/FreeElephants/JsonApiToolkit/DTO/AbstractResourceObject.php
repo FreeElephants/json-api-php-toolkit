@@ -5,6 +5,9 @@ namespace FreeElephants\JsonApiToolkit\DTO;
 use FreeElephants\JsonApiToolkit\DTO\Reflection\SuitableRelationshipsTypeDetector;
 
 /**
+ *
+ * @deprecated
+ * @see \FreeElephants\JsonApi\DTO\AbstractResourceObject
  * @property AbstractAttributes $attributes
  * @property AbstractRelationships $relationships
  */

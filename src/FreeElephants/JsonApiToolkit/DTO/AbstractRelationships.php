@@ -2,6 +2,10 @@
 
 namespace FreeElephants\JsonApiToolkit\DTO;
 
+/**
+ * @deprecated
+ * @see \FreeElephants\JsonApi\DTO\AbstractRelationships
+ */
 abstract class AbstractRelationships
 {
     public function __construct(array $data)

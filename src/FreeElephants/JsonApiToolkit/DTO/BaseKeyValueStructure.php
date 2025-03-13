@@ -2,6 +2,10 @@
 
 namespace FreeElephants\JsonApiToolkit\DTO;
 
+/**
+ * @deprecated
+ * @see \FreeElephants\JsonApi\DTO\BaseKeyValueStructure
+ */
 class BaseKeyValueStructure
 {
     public function __construct(array $attributes)
