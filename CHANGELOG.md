@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.0] - 2025-03-14
+
 ### Deprecated
 - mark classes in namespace FreeElephants\JsonApiToolkit\DTO are deprecated 
 
@@ -132,7 +134,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - FastRoute Dispatcher generation from swagger operationIds
 
-[Unreleased]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.15...HEAD
+[Unreleased]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.1.0...HEAD
+[0.1.0]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.15...0.1.0
 [0.0.15]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.14...0.0.15
 [0.0.14]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.13...0.0.14
 [0.0.13]: https://github.com/FreeElephants/json-api-php-toolkit/compare/0.0.12...0.0.13
